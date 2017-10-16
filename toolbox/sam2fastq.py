@@ -3,7 +3,7 @@ import sys
 
 def main(argv):
     sam_input_file = argv[1]
-    outfilename = sam_input_file.split('.sam/')[0]+'.fastq'
+    outfilename = sam_input_file.split('.sam')[0]+'.fastq'
     outfile = open(outfilename,'w')
     with open(sam_input_file,'r') as fh:
         for line in fh:
