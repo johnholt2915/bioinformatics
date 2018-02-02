@@ -1,0 +1,18 @@
+#!/bin/bash 
+#BSUB -J <canc_data>
+#BSUB -W 2:00
+#BSUB -n 1
+#BSUB -m manda
+#BSUB -q premium
+#BSUB -P acc_GCF
+#BSUB -o /sc/orga/work/holtj02/Other_Projects/Reva_SurvAnalysis/TanyaHypothesis_Data/bsub_files/test_specific_genes_2_<canc_data>_bsub.out
+#BSUB -e /sc/orga/work/holtj02/Other_Projects/Reva_SurvAnalysis/TanyaHypothesis_Data/bsub_files/test_specific_genes_2_<canc_data>_bsub.err
+#BSUB -u john.holt@mssm.edu
+#BSUB -L /bin/bash
+#BSUB -R rusage[mem=4200]
+#BSUB -R span[hosts=1]
+module purge all
+module load R
+cd /sc/orga/work/holtj02/Other_Projects/Reva_SurvAnalysis/TanyaHypothesis_Data
+Rscript scripts/test_specific_genes_2.R Fisher_Test_data/results/gene_pairs_for_analysis.csv <canc_data>
+exit
