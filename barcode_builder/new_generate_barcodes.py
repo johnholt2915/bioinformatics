@@ -266,10 +266,14 @@ def argParser():
     parser.add_option( '-n', '--n-base-barcode',dest='n_base_barcode',default=8)
     
     ( options, args ) = parser.parse_args()
+    print "###### Barcode Generator Input Parameters #######"
+    for o in options.__dict__:
+        print o + "\t" + str(options.__dict__[o])
     return options
 
 def main(argv):
     options = argParser()
+    print "###### Barcode Generator Main Function #######"
     # adding plus 1 because my algorithm actually checks for 1 base mm less than the value passed as input.
     # my algorithm will accept the two 5-base barcodes below, even though it is possible for them to clash with 1 miscall each
     # ACGTG ==> AGGTG (transversion from C to G at 2nd index)
